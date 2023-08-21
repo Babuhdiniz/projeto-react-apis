@@ -1,11 +1,13 @@
 import React from "react";
+import PokemonListPage from "./Pages/PokemonListPage/PokemonListPage";
+import Header from "./Components/Header/Header";
 
-function App() {
+export default function App() {
   return (
     <div>
-      <h1>Pokedex</h1>
+      Teste
+      <Header />
+      <PokemonListPage />
     </div>
   );
 }
-
-export default App;
