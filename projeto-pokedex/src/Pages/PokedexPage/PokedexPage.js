@@ -1,12 +1,24 @@
-import React from 'react'
-import { Container } from './pokedexPageStyle'
+import PokemonCard from "../../Components/PokemonCard/PokemonCard";
+import { Container } from "./pokedexPageStyle";
+import Header from "../../Components/Header/Header";
 
-const PokedexPage = () => {
+function PokedexPage(props) {
+  const { pokedex, removeFromPokedex } = props;
+
   return (
-    <div>
-      <h1>PokedexPage</h1>
-    </div>
-  )
+    <Container>
+      <Header />
+      <div>
+        {pokedex.map((pokemon) => (
+          <PokemonCard
+            key={pokemon.name}
+            pokemon={pokemon}
+            removeFromPokedex={removeFromPokedex}
+          />
+        ))}
+      </div>
+    </Container>
+  );
 }
 
-export default PokedexPage
+export default PokedexPage;

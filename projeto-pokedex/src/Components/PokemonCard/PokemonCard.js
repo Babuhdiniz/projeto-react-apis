@@ -2,13 +2,20 @@ import React from "react";
 import { Container } from "./pokemonCardStyle";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../../constants/url";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, addToPokedex, removeFromPokedex }) {
+  const location = useLocation();
   const [pokemonData, setPokemonData] = useState({});
+  console.log(pokemon);
+  const navigation = useNavigate();
+  const goToPokemonDetailPage = (name) => {
+    navigation(`/pokemon/${pokemon.name}`);
+  };
+
   useEffect(() => {
     axios
-      .get(BASE_URL)
+      .get(pokemon.url)
       .then((response) => {
         setPokemonData(response.data);
         console.log(response);
@@ -20,24 +27,24 @@ function PokemonCard({ pokemon }) {
   }, [pokemon.url]);
   console.log(pokemonData);
 
-  // const fetchPokemon = async () => {
-  //   try {
-  //     const response = await axios.get(BASE_URL);
-  //     setPokemonData(response.data);
-  //   } catch (error) {
-  //     console.log("Erro ao buscar lista de pokemons");
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <Container>
-      {/* <img src={pokemonData.sprites?.front_default} alt={pokemonData.name} /> */}
       <img src={pokemonData?.sprites?.front_default} alt={pokemon.name} />
-      {/* <img src={pokemonData?.sprites?.front_default} alt={pokemon.name} /> */}
+      <h2>{pokemon.name}</h2>
+
       <div>
-        <button>Adicionar à Pokedex</button>
-        <button>Remover da Pokedex</button>
+        {location.pathname === "/" ? (
+          <button onClick={() => addToPokedex(pokemon)}>
+            Adicionar à Pokédex
+          </button>
+        ) : (
+          <button onClick={() => removeFromPokedex(pokemon)}>
+            Remover da Pokédex
+          </button>
+        )}
+        <button onClick={() => goToPokemonDetailPage(navigation, pokemon.name)}>
+          Ver os detalhes
+        </button>
       </div>
     </Container>
   );
