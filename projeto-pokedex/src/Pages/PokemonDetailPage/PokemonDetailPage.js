@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const PokemonDetailPage = () => {
   return (
     <div>
       <h1>PokemonDetailPage</h1>
     </div>
-  )
-}
+  );
+};
 
-export default PokemonDetailPage
+export default PokemonDetailPage;

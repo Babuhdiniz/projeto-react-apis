@@ -5,7 +5,7 @@ import {
   goToPokedexPage,
   goToPokemonDetailPage,
   goToPokemonListPage,
-} from "../routes/coordinator";
+} from "../../routes/coordinator";
 
 const Header = () => {
   const location = useLocation();
@@ -16,7 +16,7 @@ const Header = () => {
       case "/":
         return (
           <>
-            <button onClick={() => goToPokemonListPage(navigate)}>
+            <button onClick={() => goToPokedexPage(navigate)}>
               Ver minha Pokédex
             </button>
           </>
@@ -24,7 +24,7 @@ const Header = () => {
       case "/pokedex":
         return (
           <>
-            <button onClick={() => goToPokedexPage(navigate)}>
+            <button onClick={() => goToPokemonListPage(navigate)}>
               Voltar para lista de pokémons
             </button>
           </>
