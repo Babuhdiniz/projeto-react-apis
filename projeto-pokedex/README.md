@@ -20,8 +20,7 @@ https://github.com/Babuhdiniz/projeto-react-apis/blob/main/projeto-pokedex/src/u
 - Fluxo de dados
 - Renderização
 - Axios
-- Design Systems
-- Estado Global
+
 
 
 
